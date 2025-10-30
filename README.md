@@ -167,5 +167,5 @@ Project ini untuk keperluan edukasi dan development.
 ---
 
 **Dibuat untuk**: Tugas Sistem Manajemen Pengguna Admin Gudang
-**Author**: [Nama Anda]
+**Author**: CALVIN STVEN
 **Versi**: 1.0.0
