@@ -82,19 +82,22 @@ if ($action === 'edit' && $edit_id) {
 $products = mysqli_query($conn, "SELECT * FROM products WHERE user_id = $user_id ORDER BY created_at DESC");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Produk</title>
 </head>
 <body>
     <h1>Kelola Produk</h1>
-    <p>
-        <a href="dashboard.php">Dashboard</a> | 
-        <a href="products.php">Produk</a> | 
-        <a href="profile.php">Profil</a> | 
+    
+    <nav style="margin-bottom: 20px;">
+        <a href="dashboard.php">Dashboard</a> |
+        <a href="products.php">Produk</a> |
+        <a href="profile.php">Profil</a> |
         <a href="logout.php">Logout</a>
-    </p>
+    </nav>
+    
     <hr>
     
     <?php displayFlash(); ?>
@@ -102,40 +105,40 @@ $products = mysqli_query($conn, "SELECT * FROM products WHERE user_id = $user_id
     <?php if ($action === 'add' || $action === 'edit'): ?>
         <h2><?php echo $action === 'add' ? 'Tambah Produk' : 'Edit Produk'; ?></h2>
         <form method="POST" action="products.php?action=<?php echo $action; ?><?php echo $edit_id ? '&id='.$edit_id : ''; ?>">
-            <table>
+            <table style="margin-bottom: 20px;">
                 <tr>
-                    <td>Kode Produk *</td>
-                    <td><input type="text" name="product_code" value="<?php echo $edit_product['product_code'] ?? ''; ?>" <?php echo $action === 'edit' ? 'readonly' : ''; ?> required></td>
+                    <td style="padding: 5px;">Kode Produk *</td>
+                    <td style="padding: 5px;"><input type="text" name="product_code" value="<?php echo $edit_product['product_code'] ?? ''; ?>" <?php echo $action === 'edit' ? 'readonly' : ''; ?> required></td>
                 </tr>
                 <tr>
-                    <td>Nama Produk *</td>
-                    <td><input type="text" name="product_name" value="<?php echo $edit_product['product_name'] ?? ''; ?>" required></td>
+                    <td style="padding: 5px;">Nama Produk *</td>
+                    <td style="padding: 5px;"><input type="text" name="product_name" value="<?php echo $edit_product['product_name'] ?? ''; ?>" required></td>
                 </tr>
                 <tr>
-                    <td>Kategori *</td>
-                    <td><input type="text" name="category" value="<?php echo $edit_product['category'] ?? ''; ?>" required></td>
+                    <td style="padding: 5px;">Kategori *</td>
+                    <td style="padding: 5px;"><input type="text" name="category" value="<?php echo $edit_product['category'] ?? ''; ?>" required></td>
                 </tr>
                 <tr>
-                    <td>Jumlah *</td>
-                    <td><input type="number" name="quantity" value="<?php echo $edit_product['quantity'] ?? ''; ?>" required></td>
+                    <td style="padding: 5px;">Jumlah *</td>
+                    <td style="padding: 5px;"><input type="number" name="quantity" value="<?php echo $edit_product['quantity'] ?? ''; ?>" required></td>
                 </tr>
                 <tr>
-                    <td>Satuan *</td>
-                    <td><input type="text" name="unit" value="<?php echo $edit_product['unit'] ?? ''; ?>" required></td>
+                    <td style="padding: 5px;">Satuan *</td>
+                    <td style="padding: 5px;"><input type="text" name="unit" value="<?php echo $edit_product['unit'] ?? ''; ?>" required></td>
                 </tr>
                 <tr>
-                    <td>Harga *</td>
-                    <td><input type="number" name="price" value="<?php echo $edit_product['price'] ?? ''; ?>" step="0.01" required></td>
+                    <td style="padding: 5px;">Harga *</td>
+                    <td style="padding: 5px;"><input type="number" name="price" value="<?php echo $edit_product['price'] ?? ''; ?>" step="0.01" required></td>
                 </tr>
                 <tr>
-                    <td>Deskripsi</td>
-                    <td><textarea name="description" rows="4" cols="40"><?php echo $edit_product['description'] ?? ''; ?></textarea></td>
+                    <td style="padding: 5px;">Deskripsi</td>
+                    <td style="padding: 5px;"><textarea name="description" rows="4" cols="40"><?php echo $edit_product['description'] ?? ''; ?></textarea></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>
+                    <td style="padding: 5px;"></td>
+                    <td style="padding: 5px;">
                         <button type="submit">Simpan</button>
-                        <a href="products.php">Batal</a>
+                        <a href="products.php" style="margin-left: 10px;">Batal</a>
                     </td>
                 </tr>
             </table>
@@ -147,7 +150,7 @@ $products = mysqli_query($conn, "SELECT * FROM products WHERE user_id = $user_id
         <p><a href="products.php?action=add">Tambah Produk</a></p>
         
         <?php if (mysqli_num_rows($products) > 0): ?>
-            <table border="1" cellpadding="10" cellspacing="0">
+            <table border="1" cellpadding="10" cellspacing="0" style="margin-top: 20px;">
                 <tr>
                     <th>Kode</th>
                     <th>Nama</th>
@@ -171,7 +174,7 @@ $products = mysqli_query($conn, "SELECT * FROM products WHERE user_id = $user_id
                 <?php endwhile; ?>
             </table>
         <?php else: ?>
-            <p>Belum ada produk.</p>
+            <p>Belum ada produk yang ditambahkan.</p>
         <?php endif; ?>
     <?php endif; ?>
 </body>
